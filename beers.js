@@ -1,16 +1,11 @@
 import Router from 'express'
 
-import beersJSON from './beersJS.json' assert {type: 'json'}
+import { getBeers } from './controllers/beersController.js';
 
 const router = Router();
 
-const beers = beersJSON;
+router.get("/", getBeers)
 
-
-router.get("/", (req, res) => {
-    res.status(200).send(
-        beersJSON
-    )
-})
+router.post("/", )
 
 export default router
