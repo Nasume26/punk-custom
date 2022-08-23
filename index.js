@@ -13,11 +13,10 @@ app.use(bodyParser.json());
 app.use("/custom" , router)
 
 
-
 const port = 3012;
 
 app.listen(port, (req, res) => {
-    console.log("server is running")
+    console.log("server is running on port "  + port)
 })
 
 app.get 

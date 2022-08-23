@@ -1,11 +1,11 @@
 import Router from 'express'
 
-import { getBeers } from './controllers/beersController.js';
+import { getBeers, postBeers } from './controllers/beersController.js';
 
 const router = Router();
 
 router.get("/", getBeers)
 
-router.post("/", )
+router.post("/", postBeers)
 
 export default router
