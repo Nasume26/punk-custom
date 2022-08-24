@@ -56,11 +56,18 @@ const beerFunction = (id, name, tagline, first_brewed, description, image_url, a
 
 }
 
-const beers = await beer.findAll();
+let beers;
 
-console.log(JSON.stringify(beers))
+const beerReturn = async () => {
+  beers =  await beer.findAll()
+}
+
+
+
+
 
 export const getBeers = (req, res) => {
+    beerReturn()
     res.status(200).send(
         JSON.stringify(beers)
     )
@@ -88,8 +95,9 @@ export const postBeers = (req, res) => {
     // })
 
     beerFunction(id, name, tagline, first_brewed, description, image_url, abv, ph)
+    beerReturn()
 
     res.status(200).send(
-        beers
+        JSON.stringify(beers)
     )
 }
