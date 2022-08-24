@@ -1,4 +1,22 @@
 import beersJSON from '../beersJS.json' assert {type: 'json'}
+import sequelize from 'sequelize';
+
+
+const { Sequelize } = sequelize; 
+
+const sequelizer = new Sequelize('database', 'root', 'password', {
+    host:'localhost',
+    dialect:'mysql'
+});
+
+
+
+
+
+
+
+
+
 
 const beers = beersJSON;
 
