@@ -1,4 +1,4 @@
-import beersJSON from '../beersJS.json' assert {type: 'json'}
+// import beersJSON from '../beersJS.json' assert {type: 'json'}
 import sequelize, { DataTypes } from 'sequelize';
 
 
@@ -40,7 +40,7 @@ const beer = sequelizer.define('beer', {
 }
 
 })
-
+console.log(beer === sequelizer.models.beer)
 const beerFunction = (id, name, tagline, first_brewed, description, image_url, abv, ph) => {
     const newBeer = beer.build({
         id: id,
@@ -56,11 +56,13 @@ const beerFunction = (id, name, tagline, first_brewed, description, image_url, a
 
 }
 
-const beers = beersJSON;
+const beers = await beer.findAll();
+
+console.log(JSON.stringify(beers))
 
 export const getBeers = (req, res) => {
     res.status(200).send(
-        beers
+        JSON.stringify(beers)
     )
 } 
 
