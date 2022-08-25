@@ -18,7 +18,7 @@ try {
 }
 
 
-const beer = sequelizer.define('beer', {
+const beer = sequelizer.define('beers', {
     id: {
        type: DataTypes.INTEGER,
        allowNull: false,
@@ -56,21 +56,17 @@ const beerFunction = (id, name, tagline, first_brewed, description, image_url, a
 
 }
 
-let beers;
-
-const beerReturn = async () => {
-  beers =  await beer.findAll()
-}
-
-
 
 
 
 export const getBeers = (req, res) => {
-    beerReturn()
-    res.status(200).send(
-        JSON.stringify(beers)
-    )
+    beer.findAll()
+    .then(result => {
+        res.status(200).send(
+            result
+        )
+    })
+
 } 
 
 export const postBeers = (req, res) => {
